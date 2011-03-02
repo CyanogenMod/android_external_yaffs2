@@ -123,7 +123,6 @@ int unyaffs(char* filename, char* directory, unyaffs_callback callback)
 
 	memset(obj_list, sizeof(char*) * MAX_OBJECTS, 0);
 	obj_list[YAFFS_OBJECTID_ROOT] = ".";
-    int count = 0;
     char pwd[PATH_MAX];
     if (directory != NULL) 
     {
