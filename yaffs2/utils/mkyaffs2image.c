@@ -306,6 +306,11 @@ static void fix_stat(const char *path, struct stat *s)
 
 static int process_directory(int parent, const char *path, int fixstats, mkyaffs2image_callback callback)
 {
+#ifdef HAS_SDCARD_ON_DATA
+	if (strcmp (path, "/data/media") == 0){
+	   return 0;
+	}
+#endif
 
 	DIR *dir;
 	struct dirent *entry;
@@ -318,7 +323,9 @@ static int process_directory(int parent, const char *path, int fixstats, mkyaffs
 	{
 		while((entry = readdir(dir)) != NULL)
 		{
-		
+#ifdef HAS_SDCARD_ON_DATA
+		  printf("path : %s <-> entry_dname: %s", path, entry->d_name);
+#endif
 			/* Ignore . and .. */
 			if(strcmp(entry->d_name,".") &&
 			   strcmp(entry->d_name,".."))
