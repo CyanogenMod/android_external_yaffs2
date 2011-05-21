@@ -47,6 +47,11 @@ LOCAL_CFLAGS =   -O2 -Wall -DCONFIG_YAFFS_UTIL -DCONFIG_YAFFS_DOES_ECC
 LOCAL_CFLAGS+=   -Wshadow -Wpointer-arith -Wwrite-strings -Wstrict-prototypes -Wmissing-declarations
 LOCAL_CFLAGS+=   -Wmissing-prototypes -Wredundant-decls -Wnested-externs -Winline
 LOCAL_CFLAGS+=   -DS_IWRITE=0200 -DS_IREAD=0400
+
+ifeq ($(TARGET_HAS_SDCARD_ON_DATA),true)
+        LOCAL_CFLAGS += -DHAS_SDCARD_ON_DATA
+endif
+
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/yaffs2
 LOCAL_MODULE := libmkyaffs2image
 LOCAL_MODULE_TAGS := eng
