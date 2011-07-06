@@ -27,7 +27,7 @@
 
 #define CHUNK_SIZE 2048
 #define SPARE_SIZE 64
-#define MAX_OBJECTS 10000
+#define MAX_OBJECTS 50000
 #define YAFFS_OBJECTID_ROOT     1
 
 static int read_chunk(void);
